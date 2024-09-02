@@ -3,12 +3,17 @@ class Checkbook:
         self.balance = 0.0
 
     def deposit(self, amount):
-        self.balance += amount
-        print("Deposited ${:.2f}".format(amount))
-        print("Current Balance: ${:.2f}".format(self.balance))
+        if amount <= 0:
+            print("You cannot deposit a negative or zero amount.")
+        else:
+            self.balance += amount
+            print("Deposited ${:.2f}".format(amount))
+            print("Current Balance: ${:.2f}".format(self.balance))
 
     def withdraw(self, amount):
-        if amount > self.balance:
+        if amount <= 0:
+            print("You cannot withdraw a negative or zero amount.")
+        elif amount > self.balance:
             print("Insufficient funds to complete the withdrawal.")
         else:
             self.balance -= amount
